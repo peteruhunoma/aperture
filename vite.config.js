@@ -9,5 +9,4 @@ export default defineConfig({
     react()
     
   ],
-  base: "aperture",
 })
