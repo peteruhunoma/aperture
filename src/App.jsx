@@ -13,12 +13,11 @@ import CustomerReview from './CustomerReview';
 import Checkout from './Checkout';
 import UploadProduct from './UploadProduct';
 import Shipper_Signup from './Shipper_Signup';
-import { AuthContext } from './auth';
 import Payment from './Payment';
 import AddReview from './AddReview';
 import Notification from './Notification';
 import ViewNotification  from './ViewNotification';
-import userImage from './userImage';
+import UserImage from './UserImage';
 import Search from './Search';
 
 function App() {
@@ -29,7 +28,7 @@ function App() {
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/login" component={Shopper_Login} />
-      <Route exact path="/userimage" component={userImage} />
+      <Route exact path="/userimage" component={UserImage} />
       <Route exact path="/search/:search" component={Search} />
       <Route exact path="/sellerlogin" component={Shipper_Login} />
       <Route exact path="/sellersignup" component={Shipper_Signup} />
