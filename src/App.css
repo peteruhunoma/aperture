@@ -1,0 +1,184 @@
+.scroll-grid {
+    
+    
+  }
+  
+  .wrapper {
+  
+    
+    overflow-x: auto;
+    /* Firefox */
+  }
+  .wrapper::-webkit-scrollbar {
+    width: 0px;           /* Chrome/Safari */
+  }
+
+  body{
+   margin: 0px;
+   padding:0px; 
+  }
+  .main-content{
+    height:fit-content;
+    margin:0px;
+
+  }
+
+  .header{
+    
+  
+    width:auto;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px;
+    margin:0px;
+    border: 1px solid #e9e3e3;
+
+  }
+  .row{
+    display:flex;
+    align-items: center;
+
+  }
+  .row h1{
+    font-weight: 900;
+    font-size:1.125rem;
+
+  }
+  .row ul {
+    margin-left: 20px;
+    display: flex;
+  }
+  .row ul li {
+
+    margin-right : 20px;
+  }
+
+  .row ul li a {
+    font-weight: 500;
+    font-size: 0.75rem;
+  }
+  .row ul li a:focus{
+    color:#ffa702;
+  }
+  .row .search-box {
+    display: flex;
+    padding: 4px;
+    margin:0px 14px;
+    background-color:#f3f0f0;
+  }
+  .row .search-box input{
+    outline:none;
+    margin-left: 4px;
+  }
+  .row img{
+    margin :0px 6px;
+  }
+
+  .content-page{
+    margin-top: 15px;
+    padding: 9px;
+  }
+  .content-page .directory a{
+    color: #c9c7c7;
+  }
+  .content-page .directory a:last-child{
+    color: #110f0f;
+  }
+
+  .category-name{
+    
+    margin-top :8px;
+    display:flex;
+    justify-content: space-between;
+    
+    
+  }
+
+  .category-name h1 {
+    font-size: 24px;
+    font-weight: 900;
+  }
+  
+  .category-name p{
+    display: grid;
+    align-items: end;
+    font-size: 12px;
+    margin-top: 10px;
+    color: #c9c7c7;
+  }
+  .category-layout{
+    display: flex;
+    justify-content: safe;
+  }
+  .category-box{
+    border-radius: 1rem;
+    padding: 16px;
+    height: fit-content;
+    background: white;
+  }
+
+  .category{
+    display: flex;
+
+  }
+  .category p {
+    margin-left: 5px;
+  }
+.margin{
+  margin-bottom:15px;
+}
+.category-box button{
+  display: grid;
+  width:100%;
+  padding: 4px;
+  
+}
+
+.range p{
+  margin-bottom: 8px;  
+}
+
+.range .pricing-range {
+  display:flex;
+  justify-content: space-between;
+}
+
+.brand {
+  margin-top: 7px;
+}
+
+.brand .brand-list{
+  display:flex;
+  margin-top: 7px;
+
+}
+
+.brand .brand-list p{
+  margin-left: 4px;
+}
+
+.apply{
+  margin-top: 10px;
+  color:white;
+  border-radius: 8px;
+}
+.clear {
+  color:#c9c7c7;
+}
+
+.next-page{
+  display: flex;
+}
+
+.box-grid{
+ display: grid;
+ justify-content: center;
+ grid-template-columns: repeat(3, minmax(0, 0.35fr));
+ gap:19px; 
+}
+
+.box-grid .product img {
+  width: 100%;
+  height: 120px;
+}
