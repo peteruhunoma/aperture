@@ -47,7 +47,7 @@ function UserImage() {
     setUploading(true);
 
     try {
-      const response = await axios.post(`${process.env.BaseUrl}/uploaduserimg`, formData, {
+      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/uploaduserimg`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -58,7 +58,7 @@ function UserImage() {
       const imageUrl = `/uploadeduser/${filename}`;
       setProfileImage(imageUrl);
       
-      const user = await axios.put(`${process.env.BaseUrl}/api/auth/uploadimg`,{filename},{
+      const user = await axios.put(`${import.meta.env.VITE_BASE_URL}/api/auth/uploadimg`,{filename},{
         withCredentials:true
       })
 
@@ -80,7 +80,7 @@ function UserImage() {
 
   const img = async () => {
     try{
-    const res = await axios.get(`${process.env.BaseUrl}/api/auth/img`,{
+    const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/auth/img`,{
       withCredentials:true
     });
     

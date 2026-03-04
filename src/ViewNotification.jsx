@@ -26,7 +26,7 @@ function ViewNotification() {
   
   const getOrderNumber = async () => {
     try {
-      const res = await axios.get(`${process.env.BaseUrl}/posts/orderDate`, {
+      const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/posts/orderDate`, {
         params :{orderNumber},
       withCredentials: true
       });
@@ -59,7 +59,7 @@ setDate({
   const ShoppingCart = async () => {
   
       try {
-        const res = await axios.get(`${process.env.BaseUrl}/posts/getcartsafterpurchase`, {
+        const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/posts/getcartsafterpurchase`, {
           params :{orderNumber},
           withCredentials: true
         });
@@ -76,7 +76,7 @@ setDate({
 
   const ShippingPrice = async () => {
     try {
-      const res = await axios.get(`${process.env.BaseUrl}/posts/shippingprice`, {
+      const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/posts/shippingprice`, {
         withCredentials: true
       });
       setShippingPrice(res.data[0].shipping_price);
@@ -92,7 +92,7 @@ setDate({
   
     try{
 
-     const res = await axios.get(`${process.env.BaseUrl}/posts/getshippinginfo`,{
+     const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/posts/getshippinginfo`,{
        withCredentials: true
      });
      

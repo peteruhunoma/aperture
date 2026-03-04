@@ -60,7 +60,7 @@ function Home() {
   
   
   const productList = async ()=> {
-    const res = await axios.get(`${process.env.BaseUrl}/posts`,{withCredentials:true});
+    const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/posts`,{withCredentials:true});
     setBestSeller(res.data.bestSeller);
     setNewArrival(res.data.newArrival);
     setCategory(res.data.category);
@@ -70,7 +70,7 @@ function Home() {
   const handleShoppingCart = async () => {
     try {
       
-      const res = await axios.get(`${process.env.BaseUrl}/posts/carts`, {
+      const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/posts/carts`, {
         withCredentials: true
       });
       
@@ -86,7 +86,7 @@ function Home() {
     console.log(productId);
     const quantity = 1;
     try{
-    const res = await axios.post(`${process.env.BaseUrl}/posts/addtocart`, { id : productId, productId, quantity},
+    const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/posts/addtocart`, { id : productId, productId, quantity},
     {
       withCredentials:true
     });

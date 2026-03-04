@@ -59,7 +59,7 @@ function Checkout() {
 
   const addPrice = async () => {
     try {
-      const res = await axios.post(`${process.env.BaseUrl}/posts/addprice`,{grandTotal, shippingPrice}, {
+      const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/posts/addprice`,{grandTotal, shippingPrice}, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         withCredentials: true,
@@ -89,7 +89,7 @@ function Checkout() {
     }
   }else{
     try{
-      const res = await axios.post(`${process.env.BaseUrl}/posts/shippinginfo`, { firstName, lastName, address, city, postalCode, country }, {
+      const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/posts/shippinginfo`, { firstName, lastName, address, city, postalCode, country }, {
       method:"POST",
       headers:{"Content-Type" : "application/json"},
       withCredentials: true
@@ -127,7 +127,7 @@ function Checkout() {
 
   const ShoppingCart = async () => {
     try {
-      const res = await axios.get(`${process.env.BaseUrl}/posts/carts`, {
+      const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/posts/carts`, {
         withCredentials: true
       });
       

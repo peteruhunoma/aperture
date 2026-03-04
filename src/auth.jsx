@@ -11,7 +11,7 @@
     const handleShippingAddress = async () => {
         try{
          
-            const res = await axios.get(`${process.env.BaseUrl}/posts/getshippinginfo`,{
+            const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/posts/getshippinginfo`,{
               withCredentials: true
             });
             const address = res.data.oldaddress;
@@ -38,7 +38,7 @@
             setCurrentuser(null)
         };
       
-        const res = await axios.post(`${process.env.BaseUrl}/api/auth/login`,
+        const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/auth/login`,
           input,                       
           { withCredentials: true } 
         );
@@ -49,7 +49,7 @@
         if (currentuser.length > 0){
             setCurrentuser(null);
         }
-        const res = await axios.post(`${process.env.BaseUrl}/api/sellerAuth/sellerLogin`, input,{
+        const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/sellerAuth/sellerLogin`, input,{
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({input}),
@@ -61,7 +61,7 @@
     }
     const logout = async () => {
       const res = await axios.post(
-          `${process.env.BaseUrl}/api/auth/logout`,
+          `${import.meta.env.VITE_BASE_URL}/api/auth/logout`,
           {}, 
           {
               withCredentials: true 

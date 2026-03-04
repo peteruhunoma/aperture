@@ -19,7 +19,7 @@ function ShoppingCart() {
    const handleShoppingCart = async () => {
      try {
        setLoading(true);
-       const res = await axios.get(`${process.env.BaseUrl}/posts/carts`, {
+       const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/posts/carts`, {
          withCredentials: true
        });
        
@@ -40,7 +40,7 @@ function ShoppingCart() {
     setQuantity(newQty);                  
     try {
       await axios.post(
-        `${process.env.BaseUrl}/posts/addtocart`,
+        `${import.meta.env.VITE_BASE_URL}/posts/addtocart`,
         { id:item.product_id, productId: item.product_id, quantity: newQty },
         { withCredentials: true }
       );
@@ -51,7 +51,7 @@ function ShoppingCart() {
     
   const deleteCart = async (productId) => {
     try{
-    const res = await axios.delete(`${process.env.BaseUrl}/posts/removecarts/${productId}`,{
+    const res = await axios.delete(`${import.meta.env.VITE_BASE_URL}/posts/removecarts/${productId}`,{
       withCredentials:true
     });
     console.log(productId);

@@ -12,7 +12,7 @@ function Notification() {
   
   const getNotifications = async () => {
     try {
-      const res = await axios.get(`${process.env.BaseUrl}/posts/get-notifications`, {
+      const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/posts/get-notifications`, {
         withCredentials: true
       });
       
@@ -25,7 +25,7 @@ function Notification() {
   };
   const viewedNotification = async (orderNumber) => {
     try {
-      const res = await axios.put(`${process.env.BaseUrl}/posts/viewed-notification`, {viewed, orderNumber}, {
+      const res = await axios.put(`${import.meta.env.VITE_BASE_URL}/posts/viewed-notification`, {viewed, orderNumber}, {
         withCredentials: true
       });
  

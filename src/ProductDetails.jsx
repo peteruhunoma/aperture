@@ -41,7 +41,7 @@ function ProductDetails() {
 
   const handleDetail = async () => {
     try {
-      const res = await axios.get(`${process.env.BaseUrl}/posts/${id}`, {
+      const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/posts/${id}`, {
         withCredentials: true
       });
       
@@ -56,7 +56,7 @@ function ProductDetails() {
   const addToCart = async () => {
     const productId = id;
     try{
-    const res = await axios.post(`${process.env.BaseUrl}/posts/addtocart`, { id, productId, quantity},
+    const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/posts/addtocart`, { id, productId, quantity},
     {
       withCredentials:true
     });
@@ -66,7 +66,7 @@ function ProductDetails() {
     }
   }
   const cart = async () => {
-     const res = await axios.get(`${process.env.BaseUrl}/posts/carts`, {
+     const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/posts/carts`, {
       withCredentials:true
      });
      res;
@@ -76,11 +76,11 @@ function ProductDetails() {
 
   const CategoriesProducts = async () => {
     try{
-      const response = await axios.get(`${process.env.BaseUrl}/posts/${id}`, {
+      const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/posts/${id}`, {
         withCredentials: true
       });
 
-      const res = await axios.get(`${process.env.BaseUrl}/posts/categories/${response.data.category}`, {
+      const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/posts/categories/${response.data.category}`, {
       withCredentials: true
       })
       setCategoriesProduct(res.data[0]);

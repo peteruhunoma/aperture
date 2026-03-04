@@ -46,7 +46,7 @@ const Search = () => {
         offset: pagination.offset
       };
 
-      const response = await axios.get(`${process.env.BaseUrl}/posts/search`, { params });
+      const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/posts/search`, { params });
 
       if (response.data.success) {
         let sortedProducts = [...response.data.data];
@@ -114,7 +114,7 @@ const Search = () => {
     console.log(productId);
     const quantity = 1;
     try{
-    const res = await axios.post(`${process.env.BaseUrl}/posts/addtocart`, { id : productId, productId, quantity},
+    const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/posts/addtocart`, { id : productId, productId, quantity},
     {
       withCredentials:true
     });
@@ -128,7 +128,7 @@ const Search = () => {
   const handleShoppingCart = async () => {
     try {
       
-      const res = await axios.get(`${process.env.BaseUrl}/posts/carts`, {
+      const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/posts/carts`, {
         withCredentials: true
       });
       

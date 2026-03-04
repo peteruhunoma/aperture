@@ -46,7 +46,7 @@ function UploadProduct() {
   
   const cats =  async () => {
     try{
-    const res = await axios.get(`${process.env.BaseUrl}/posts/categories`, {withCredentials:true});
+    const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/posts/categories`, {withCredentials:true});
     res;
     setCategory(res.data);
   }catch(err){
@@ -74,7 +74,7 @@ const publish = async (e) => {
   tempImage.forEach(file => formData.append('images', file)); 
 
   try {
-    const { data } = await axios.post(`${process.env.BaseUrl}/upload`, formData, {
+    const { data } = await axios.post(`${import.meta.env.VITE_BASE_URL}/upload`, formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
       withCredentials: true
     });
@@ -82,7 +82,7 @@ const publish = async (e) => {
     const media = data.filenames;         
     const stock = Number(stockNumber)
     const res = await axios.post(
-      `${process.env.BaseUrl}/posts/`,
+      `${import.meta.env.VITE_BASE_URL}/posts/`,
       {
         productName,
         productDescription,
