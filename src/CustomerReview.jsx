@@ -11,7 +11,7 @@ function CustomerReview({id,  category, username, productTitle, price, productIm
 
 const getReview = async () => { 
   try {
-    const res = await axios.get(`http://localhost:3000/posts/getreview/${id}`, {
+    const res = await axios.get(`${process.env.BaseUrl}/posts/getreview/${id}`, {
       withCredentials: true
     });
     

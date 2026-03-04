@@ -19,12 +19,14 @@ function ShoppingCart() {
    const handleShoppingCart = async () => {
      try {
        setLoading(true);
-       const res = await axios.get("http://localhost:3000/posts/carts", {
+       const res = await axios.get(`${process.env.BaseUrl}/posts/carts`, {
          withCredentials: true
        });
        
        setCarts(res.data.items);
+       console.log(res.data);
        setSubtotal(res.data.subtotal);
+       console.log(res.data);
      } catch (err) {
        console.log(err);
      } finally {
@@ -38,7 +40,7 @@ function ShoppingCart() {
     setQuantity(newQty);                  
     try {
       await axios.post(
-        'http://localhost:3000/posts/addtocart',
+        `${process.env.BaseUrl}/posts/addtocart`,
         { id:item.product_id, productId: item.product_id, quantity: newQty },
         { withCredentials: true }
       );
@@ -49,7 +51,7 @@ function ShoppingCart() {
     
   const deleteCart = async (productId) => {
     try{
-    const res = await axios.delete(`http://localhost:3000/posts/removecarts/${productId}`,{
+    const res = await axios.delete(`${process.env.BaseUrl}/posts/removecarts/${productId}`,{
       withCredentials:true
     });
     console.log(productId);
@@ -114,8 +116,8 @@ function ShoppingCart() {
       style={{backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuCoTilhEyHIMnYOP_j0mCZYObTYYu1vbuPlVezofSZyXMAq6xQAiFEZPg7D161bD-MTzwm07XWI_-kxT9nATf3EnTpPPJCLVy01VJp052VM0z8RLPeJgzHyWX-YtYL0-ikc4r3VDK1rNd42A9W-srxjuMOixAjcf82W2BIJ-Y5QoHiqtQDTb4UWu-SG-0kb_zrWfkKmnUTX6UqU-0Zj60_fe9KlpgFOTYpd6Z6gIVz8NHLceQTf_7_C_iH-RxLb5S0fDtfKxs3d8U14")'}}
     ></div>
     <div className="flex flex-1 flex-col justify-center gap-1">
-      <p className="text-gray-900 dark:text-white text-base font-bold leading-normal">{item.ProductName}</p>
-      <p className="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">${item.Price}</p>
+      <p className="text-gray-900 dark:text-white text-base font-bold leading-normal">{item.productName}</p>
+      <p className="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">${item.price}</p>
       <div className="flex items-center gap-2 text-sm mt-2">
         <button className="text-gray-600 hover:text-red dark:text-gray-400 dark:hover:text-primary font-medium" onClick={() => {
           
@@ -142,7 +144,7 @@ function ShoppingCart() {
         +
       </button>
     </div>
-    <p className="text-base font-bold text-gray-900 dark:text-white">${item.Price}</p>
+    <p className="text-base font-bold text-gray-900 dark:text-white">${item.price}</p>
   </div>
 </div>
 

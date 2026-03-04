@@ -34,7 +34,7 @@ function OrderComfirmed() {
   const notifictions = async () => {
     setIsLoading(true);
     try{
-      const res = await axios.post('http://localhost:3000/posts/notifications', {orderNumber, arrivalDate}, {
+      const res = await axios.post(`${process.env.BaseUrl}/posts/notifications`, {orderNumber, arrivalDate}, {
       withCredentials: true
         });
          
@@ -50,7 +50,7 @@ function OrderComfirmed() {
     console.log(orderNumber);
   
       try {
-        const res = await axios.get("http://localhost:3000/posts/getcartsafterpurchase", {
+        const res = await axios.get(`${process.env.BaseUrl}/posts/getcartsafterpurchase`, {
           params :{orderNumber},
           withCredentials: true
         });
@@ -68,7 +68,7 @@ function OrderComfirmed() {
 
   const ShippingPrice = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/posts/shippingprice", {
+      const res = await axios.get(`${process.env.BaseUrl}/posts/shippingprice`, {
         withCredentials: true
       });
       setShippingPrice(res.data[0].shipping_price);
@@ -84,7 +84,7 @@ function OrderComfirmed() {
   
     try{
 
-     const res = await axios.get("http://localhost:3000/posts/getshippinginfo",{
+     const res = await axios.get(`${process.env.BaseUrl}/posts/getshippinginfo`,{
        withCredentials: true
      });
      
@@ -108,7 +108,7 @@ function OrderComfirmed() {
 
    const getOrderNumber = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/posts/getordernumber", {
+      const res = await axios.get(`${process.env.BaseUrl}/posts/getordernumber`, {
         withCredentials: true
       });
       setOrderNumber(res.data[0].orderNumber);

@@ -1,10 +1,11 @@
 import React, {useState, useContext, useEffect} from 'react';
 import axios from 'axios';
 import moment from "moment";
-import Header from "./Header.jsx"
+import Header from "./Header.jsx";
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min.js';
 
 function UploadProduct() {
-  
+  const history = useHistory();
   const [productName, setProductName] = useState("");
   const [productDescription, setProductDescription] = useState("");
   const [stockNumber, setStockNumber] = useState("");
@@ -45,7 +46,7 @@ function UploadProduct() {
   
   const cats =  async () => {
     try{
-    const res = await axios.get("http://localhost:3000/posts/categories", {withCredentials:true});
+    const res = await axios.get(`${process.env.BaseUrl}/posts/categories`, {withCredentials:true});
     res;
     setCategory(res.data);
   }catch(err){
@@ -73,7 +74,7 @@ const publish = async (e) => {
   tempImage.forEach(file => formData.append('images', file)); 
 
   try {
-    const { data } = await axios.post('http://localhost:3000/upload', formData, {
+    const { data } = await axios.post(`${process.env.BaseUrl}/upload`, formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
       withCredentials: true
     });
@@ -81,7 +82,7 @@ const publish = async (e) => {
     const media = data.filenames;         
     const stock = Number(stockNumber)
     const res = await axios.post(
-      'http://localhost:3000/posts/',
+      `${process.env.BaseUrl}/posts/`,
       {
         productName,
         productDescription,
@@ -101,7 +102,7 @@ const publish = async (e) => {
     setTempImage([]);
     setImageFile(null);
   } catch (err) {
-    if(err.response.data.error === "Only image formats (JPEG, PNG, JPG) allowed"){
+    if(err?.response?.data?.error === "Only image formats (JPEG, PNG, JPG) allowed"){
       setError("Only image formats (JPEG, PNG, JPG) allowed");
     }
 

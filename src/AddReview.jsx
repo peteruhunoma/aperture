@@ -43,7 +43,7 @@ function AddReview({id, refreshReviews, close, productTitle, category, price, us
     }
     try{
       setLoggedInUsername(currentuser.username);
-      const res = await axios.post("http://localhost:3000/posts/review", {
+      const res = await axios.post(`${process.env.BaseUrl}/posts/review`, {
         title,
         rating,
         review,

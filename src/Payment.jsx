@@ -69,7 +69,7 @@ setOrderId(generateUniqueId());
   const ShoppingCart = async () => {
     try {
       
-      const res = await axios.get("http://localhost:3000/posts/carts", {
+      const res = await axios.get(`${process.env.BaseUrl}/posts/carts`, {
         withCredentials: true
       });
       
@@ -84,7 +84,7 @@ setOrderId(generateUniqueId());
   const ShippingPrice = async () => {
     try {
       
-      const res = await axios.get("http://localhost:3000/posts/shippingprice", {
+      const res = await axios.get(`${process.env.BaseUrl}/posts/shippingprice`, {
         withCredentials: true
       });
       setShippingPrice(res.data[0].shipping_price);
@@ -97,7 +97,7 @@ setOrderId(generateUniqueId());
   const ShippingInfo = async () => {
   
    try{
-    const res = await axios.get("http://localhost:3000/posts/getshippinginfo",{
+    const res = await axios.get(`${process.env.BaseUrl}/posts/getshippinginfo`,{
       withCredentials: true
     });
     
@@ -124,7 +124,7 @@ setOrderId(generateUniqueId());
 
   const purchaseStatus = async () => {
     try{
-      const response = await axios.put("http://localhost:3000/posts/productstatus", {purchased, orderId},{
+      const response = await axios.put(`${process.env.BaseUrl}/posts/productstatus`, {purchased, orderId},{
           withCredentials:true
         });
         if(response?.status === 200){
@@ -141,7 +141,7 @@ setOrderId(generateUniqueId());
     e.preventDefault();
     try {
       
-      const res = await axios.put("http://localhost:3000/posts/addpayment", {cardNumber, expiration, cvc, cardholderName, orderId }, {
+      const res = await axios.put(`${process.env.BaseUrl}/posts/addpayment`, {cardNumber, expiration, cvc, cardholderName, orderId }, {
         withCredentials: true,
       });
       res;

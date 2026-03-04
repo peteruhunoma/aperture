@@ -40,7 +40,7 @@ const Header = ({refreshCartTotal, reload, search, changed }) => {
 
   const getCategories = async () => {
     try{
-      const res = await axios.get('http://localhost:3000/posts/categories', {
+      const res = await axios.get(`${process.env.BaseUrl}/posts/categories`, {
       withCredentials: true
       })
       setCats(res.data[0].category);
@@ -53,7 +53,7 @@ const Header = ({refreshCartTotal, reload, search, changed }) => {
   const handleShoppingCart = async () => {
     try {
       
-      const res = await axios.get("http://localhost:3000/posts/carts", {
+      const res = await axios.get(`${process.env.BaseUrl}/posts/carts`, {
         withCredentials: true
       });
       
@@ -65,7 +65,7 @@ const Header = ({refreshCartTotal, reload, search, changed }) => {
 
   const img = async () => {
     try{
-    const res = await axios.get("http://localhost:3000/api/auth/img",{
+    const res = await axios.get(`${process.env.BaseUrl}/api/auth/img`,{
       withCredentials:true
     });
     setUserImage(res.data[0].userImage);

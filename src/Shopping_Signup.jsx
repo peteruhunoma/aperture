@@ -85,7 +85,7 @@ const handleSubmit = async (e)=> {
     console.log("validation success");
   }
 try{
-  const res = await axios.post("http://localhost:3000/api/auth/register", {
+  const res = await axios.post(`${process.env.BaseUrl}/api/auth/register`, {
     email, username, fullName, password, date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
   }, {
   method: "POST",

@@ -41,7 +41,7 @@ function ProductDetails() {
 
   const handleDetail = async () => {
     try {
-      const res = await axios.get(`http://localhost:3000/posts/${id}`, {
+      const res = await axios.get(`${process.env.BaseUrl}/posts/${id}`, {
         withCredentials: true
       });
       
@@ -56,7 +56,7 @@ function ProductDetails() {
   const addToCart = async () => {
     const productId = id;
     try{
-    const res = await axios.post("http://localhost:3000/posts/addtocart", { id, productId, quantity},
+    const res = await axios.post(`${process.env.BaseUrl}/posts/addtocart`, { id, productId, quantity},
     {
       withCredentials:true
     });
@@ -66,7 +66,7 @@ function ProductDetails() {
     }
   }
   const cart = async () => {
-     const res = await axios.get("http://localhost:3000/posts/carts", {
+     const res = await axios.get(`${process.env.BaseUrl}/posts/carts`, {
       withCredentials:true
      });
      res;
@@ -76,14 +76,15 @@ function ProductDetails() {
 
   const CategoriesProducts = async () => {
     try{
-      const response = await axios.get(`http://localhost:3000/posts/${id}`, {
+      const response = await axios.get(`${process.env.BaseUrl}/posts/${id}`, {
         withCredentials: true
       });
 
-      const res = await axios.get(`http://localhost:3000/posts/categories/${response.data.Category}`, {
+      const res = await axios.get(`${process.env.BaseUrl}/posts/categories/${response.data.category}`, {
       withCredentials: true
       })
       setCategoriesProduct(res.data[0]);
+      console.log(res.data[0]);
     }catch(err){
       console.log(err);
     }
@@ -225,7 +226,7 @@ function ProductDetails() {
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">You Might Also Like</h3>
 <div className="flex flex-nowrap overflow-x-auto overscroll-x-contain gap-6 scroll-smooth scrollbar-hide pb-4">
   
-  {categoriesProduct.map((items) => (
+  {categoriesProduct.map(items => (
     <Link to={`/productDetails/${items.id}`} key={items.id}>
       <div 
       key={items.id} 

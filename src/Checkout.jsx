@@ -59,8 +59,7 @@ function Checkout() {
 
   const addPrice = async () => {
     try {
-      
-      const res = await axios.post("http://localhost:3000/posts/addprice",{grandTotal, shippingPrice}, {
+      const res = await axios.post(`${process.env.BaseUrl}/posts/addprice`,{grandTotal, shippingPrice}, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         withCredentials: true,
@@ -90,7 +89,7 @@ function Checkout() {
     }
   }else{
     try{
-      const res = await axios.post("http://localhost:3000/posts/shippinginfo", { firstName, lastName, address, city, postalCode, country }, {
+      const res = await axios.post(`${process.env.BaseUrl}/posts/shippinginfo`, { firstName, lastName, address, city, postalCode, country }, {
       method:"POST",
       headers:{"Content-Type" : "application/json"},
       withCredentials: true
@@ -128,8 +127,7 @@ function Checkout() {
 
   const ShoppingCart = async () => {
     try {
-      
-      const res = await axios.get("http://localhost:3000/posts/carts", {
+      const res = await axios.get(`${process.env.BaseUrl}/posts/carts`, {
         withCredentials: true
       });
       
