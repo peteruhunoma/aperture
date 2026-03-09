@@ -151,7 +151,7 @@ onChange={handleSearchChange}
                       onClick={() => setIsProfileOpen(!isProfileOpen)}
                       className="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-primary transition-colors"
                     >
-                      <img className="h-8 w-8 rounded-full object-cover" src={userImage === "" ? `1${import.meta.env.VITE_IMAGE}/uploadeduser/default.png`  : `${import.meta.env.VITE_IMAGE}/public/uploadeduser/${userImage}`}  />
+                      <img className="h-8 w-8 rounded-full object-cover" src={userImage === "" ? `https://res.cloudinary.com/dsypjacgn/image/upload/v1773062661/default.png`  : `${userImage}`}  />
                     </button>
 
                     {isProfileOpen && (
