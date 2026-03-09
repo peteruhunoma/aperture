@@ -54,8 +54,9 @@ function UserImage() {
       });
 
       const filename = response.data;
+      console.log(filename)
       setUploadedFilename(filename);
-      const imageUrl = `${import.meta.env.VITE_IMAGE}/uploadeduser/${filename}`;
+      const imageUrl = `${filename}`;
       setProfileImage(imageUrl);
       console.log(response);
       const user = await axios.put(`${import.meta.env.VITE_BASE_URL}/api/auth/uploadimg`,{filename},{
