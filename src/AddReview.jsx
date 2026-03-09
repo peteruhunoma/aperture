@@ -81,7 +81,7 @@ function AddReview({id, refreshReviews, close, productTitle, category, price, us
         <div className="lg:col-span-4 flex flex-col gap-6 lg:sticky lg:top-24">
           <div className="bg-surface-light rounded-xl p-4 shadow-sm border border-border-light">
             <img className=" absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors w-full aspect-[4/3] bg-center bg-cover rounded-lg mb-4 relative overflow-hidden group" 
-                 src={`../public/${username}/${productTitle}/${productImage}`}/>
+                 src={`${productImage}`}/>
               
             
             <div className="flex flex-col gap-1">

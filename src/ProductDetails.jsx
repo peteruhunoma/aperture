@@ -46,7 +46,7 @@ function ProductDetails() {
       });
       
       setProductDetails(res.data);
-      
+      console.log(res.data)
     } catch (err) {
       console.log("Error fetching product details:", err);
       
@@ -130,7 +130,7 @@ function ProductDetails() {
                   <img  
                     className="w-full bg-center bg-no-repeat bg-cover flex flex-col justify-end overflow-hidden bg-gray-100 dark:bg-gray-800 rounded-xl aspect-square min-h-80" 
                     data-alt="Aperture Model Pro lens shown from the front"
-                    src={`../public/${productDetails.username}/${productDetails.ProductName}/${productDetails.media}`}
+                    src={`${productDetails.media}`}
                   />
                 
                   <div className="flex overflow-y-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
@@ -139,28 +139,28 @@ function ProductDetails() {
                         <img 
                           className="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex flex-col border-2 border-primary" 
                           data-alt="Aperture Model Pro lens side view"
-                          src={`../public/${productDetails.username}/${productDetails.ProductName}/${productDetails.Media?.split(',')[1]?.trim()}`}
+                          src={`${productDetails.Media?.split(',')[1]?.trim()}`}
                         />
                       </div>
                       <div className="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-24">
                         <img 
                           className="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex flex-col" 
                           data-alt="Aperture Model Pro lens top view"
-                          src={`../public/${productDetails.username}/${productDetails.ProductName}/${productDetails.Media?.split(',')[2]?.trim()}`}
+                          src={`${productDetails.Media?.split(',')[2]?.trim()}`}
                         />
                       </div>
                       <div className="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-24">
                         <img 
                           className="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex flex-col" 
                           data-alt="Close up of Aperture Model Pro lens glass"
-                          src={`../public/${productDetails.username}/${productDetails.ProductName}/${productDetails.Media?.split(',')[3]?.trim()}`}
+                          src={`${productDetails.Media?.split(',')[3]?.trim()}`}
                         />
                       </div>
                       <div className="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-24">
                         <img 
                           className="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex flex-col" 
                           data-alt="Aperture Model Pro lens in use on a camera body"
-                          src={`../public/${productDetails.username}/${productDetails.ProductName}/${productDetails.Media?.split(',')[4]?.trim()}`}
+                          src={`${productDetails.Media?.split(',')[4]?.trim()}`}
                         />
                       </div>
                     </div>
@@ -234,7 +234,7 @@ function ProductDetails() {
     >
       <img 
         className="w-full aspect-square bg-center bg-no-repeat bg-cover rounded-xl bg-gray-100 dark:bg-gray-800" 
-        src={`../public/${items.username}/${items.ProductName}/${items.Media?.split(',')[0]?.trim()}`} 
+        src={`${items.Media?.split(',')[0]?.trim()}`} 
       />
       
       <div className="flex flex-col px-1">

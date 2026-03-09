@@ -257,7 +257,7 @@ setOrderId(generateUniqueId());
 {carts.map(items=> (  
 <div className="flex gap-4" key={items.product_id}>
 <div className="w-20 h-20 bg-gray-100 dark:bg-gray-800 rounded-lg flex-shrink-0 border border-border-light dark:border-border-dark p-2">
-<img alt="Black leather boot" className="w-full h-full object-contain mix-blend-multiply dark:mix-blend-normal" src={`../public/${items.username}/${items.ProductName}/${items.media}`}/>
+<img alt="Black leather boot" className="w-full h-full object-contain mix-blend-multiply dark:mix-blend-normal" src={`${items.media}`}/>
 </div>
 <div className="flex-1">
 <div className="flex justify-between items-start">

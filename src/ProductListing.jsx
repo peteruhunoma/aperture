@@ -210,7 +210,7 @@ function ProductListing() {
         <img
           alt={items.ProductName}
           className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
-          src={`../public/${items.username}/${items.ProductName}/${items.Media.split(',')[0].trim()}`}
+          src={`${items.Media.split(',')[0].trim()}`}
         />
       </div>
 

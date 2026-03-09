@@ -151,13 +151,16 @@ onChange={handleSearchChange}
                       onClick={() => setIsProfileOpen(!isProfileOpen)}
                       className="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-primary transition-colors"
                     >
-                      <img className="h-8 w-8 rounded-full object-cover" src={userImage === "" ? '../public/uploadeduser/default.png'  : `../public/uploadeduser/${userImage}`}  />
+                      <img className="h-8 w-8 rounded-full object-cover" src={userImage === "" ? `1${import.meta.env.VITE_IMAGE}/uploadeduser/default.png`  : `${import.meta.env.VITE_IMAGE}/public/uploadeduser/${userImage}`}  />
                     </button>
 
                     {isProfileOpen && (
                       <div className="absolute right-0 mt-2 w-48 bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-md shadow-lg py-1 z-50">
                         <Link to="/uploadproduct" onClick={closeAll} className="block px-4 py-2 text-sm text-text-primary-light dark:text-text-primary-dark hover:bg-gray-100 dark:hover:bg-gray-800">
                           Upload Product
+                        </Link>
+                        <Link to="/userimage" onClick={closeAll} className="block px-4 py-2 text-sm text-text-primary-light dark:text-text-primary-dark hover:bg-gray-100 dark:hover:bg-gray-800">
+                          Upload Profile Image
                         </Link>
                         <button 
                           onClick={() => { 
@@ -205,6 +208,7 @@ onChange={handleSearchChange}
               <>
                 <div className="border-t border-border-light dark:border-border-dark my-2 pt-2"></div>
                 <Link onClick={closeAll} className="block px-3 py-2 text-base font-medium" to="/uploadproduct">Upload Product</Link>
+                <Link onClick={closeAll} className="block px-3 py-2 text-base font-medium" to="/userimage">Upload Profile Image</Link>
                 <button 
                   onClick={() => {
                      logout(); 

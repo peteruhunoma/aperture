@@ -113,7 +113,7 @@ function ShoppingCart() {
     <div 
       className="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[80px] sm:size-[100px]" 
       data-alt="Vintage Film Camera in silver color" 
-      style={{backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuCoTilhEyHIMnYOP_j0mCZYObTYYu1vbuPlVezofSZyXMAq6xQAiFEZPg7D161bD-MTzwm07XWI_-kxT9nATf3EnTpPPJCLVy01VJp052VM0z8RLPeJgzHyWX-YtYL0-ikc4r3VDK1rNd42A9W-srxjuMOixAjcf82W2BIJ-Y5QoHiqtQDTb4UWu-SG-0kb_zrWfkKmnUTX6UqU-0Zj60_fe9KlpgFOTYpd6Z6gIVz8NHLceQTf_7_C_iH-RxLb5S0fDtfKxs3d8U14")'}}
+      style={{backgroundImage: `url(${item.media})`}}
     ></div>
     <div className="flex flex-1 flex-col justify-center gap-1">
       <p className="text-gray-900 dark:text-white text-base font-bold leading-normal">{item.productName}</p>

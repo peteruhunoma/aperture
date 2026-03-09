@@ -229,7 +229,7 @@ setDate({
 {carts.map(items =>(
 
 <div className="flex items-center gap-4"key={items.product_id}>
-<img className="size-16 rounded-lg object-cover bg-neutral-light dark:bg-neutral-dark" data-alt="Close up of a modern digital camera lens" src={`../public/${items.username}/${items.ProductName}/${items.media}`}/>
+<img className="size-16 rounded-lg object-cover bg-neutral-light dark:bg-neutral-dark" data-alt="Close up of a modern digital camera lens" src={`${items.media}`}/>
 <div className="flex-grow">
 <p className="font-medium">{items.ProductName}</p>
 <p className="text-sm text-text-muted-light dark:text-text-muted-dark">Quantity:{items.quantity}</p>

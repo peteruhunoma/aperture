@@ -64,6 +64,7 @@ function Home() {
     setBestSeller(res.data.bestSeller);
     setNewArrival(res.data.newArrival);
     setCategory(res.data.category);
+    console.log(res.data);
 
   }
   
@@ -141,7 +142,7 @@ function Home() {
                             {category.map(items=> (
                             
                             <div onClick={() => redirectToCategories(items)} className="min-w-[280px] group relative block aspect-[3/4] overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800" key={items.id}>
-                              <img alt="Men's Fashion" className="object-cover w-full h-full transform transition-transform duration-500 group-hover:scale-105 opacity-90 group-hover:opacity-100" src={`../public/${items.username}/${items.productName}/${items.media}`}/>
+                              <img alt="Men's Fashion" className="object-cover w-full h-full transform transition-transform duration-500 group-hover:scale-105 opacity-90 group-hover:opacity-100" src={`${items.media}`}/>
                               <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
                               <span className="text-white font-semibold text-lg">{items.ProductName}</span>
                             </div>
@@ -171,7 +172,7 @@ function Home() {
                         {newArrival.map(items => (
                           <div key={items.id} className="min-w-[280px] bg-surface-light dark:bg-surface-dark rounded-lg shadow-sm border border-border-light dark:border-border-dark hover:shadow-md transition-shadow" >
                             <div className="aspect-square bg-gray-100 dark:bg-gray-800 relative cursor-pointer" onClick={() => details(items)} >
-                              <img alt="Denim Work Jacket" className="object-cover w-full h-full" src={`../public/${items.username}/${items.productName}/${items.media}`}/>
+                              <img alt="Denim Work Jacket" className="object-cover w-full h-full" src={`${items.media}`}/>
                             </div>
 
                             <div className="p-4">
@@ -222,7 +223,7 @@ function Home() {
 
                   <div className="min-w-[280px] bg-surface-light dark:bg-surface-dark rounded-lg overflow-hidden shadow-sm border border-border-light dark:border-border-dark hover:shadow-md transition-shadow"  key={items.id}>
                       <div className="aspect-square bg-gray-100 dark:bg-gray-800 relative" onClick={()=> {details(items)}}>
-                        <img alt="Velocity Runner" className="object-cover w-full h-full" src={`../public/${items.username}/${items.productName}/${items.media}`}/>
+                        <img alt="Velocity Runner" className="object-cover w-full h-full" src={`${items.media}`}/>
                       </div>
                     <div className="p-4">
                     <h3 className="font-medium text-text-primary-light dark:text-text-primary-dark" onClick={()=> {details(items)}}>{items.productName}</h3>

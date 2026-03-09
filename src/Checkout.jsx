@@ -261,7 +261,7 @@ function Checkout() {
           {carts.map(items => (
             <li className="flex py-5 first:pt-0" key={items.product_id}>
               <div className="h-20 w-20 flex-shrink-0 overflow-hidden rounded-md border border-gray-200 dark:border-gray-700 bg-gray-50">
-                <img alt="Red Nike running shoe" className="h-full w-full object-cover object-center" src={`../public/${items.username}/${items.ProductName}/${items.media}`}/>
+                <img alt="Red Nike running shoe" className="h-full w-full object-cover object-center" src={`${items.media}`}/>
               </div>
               <div className="ml-5 flex flex-1 flex-col justify-center">
                 <div className="flex justify-between text-base font-semibold text-gray-900 dark:text-white">
