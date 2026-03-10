@@ -26,7 +26,7 @@ function ProductListing() {
     getCategories();
     CategoriesProducts();
     setActiveCategory(cats);
-    setLoading("false");
+    setLoading(false);
   }, [cats]); 
   
     useEffect(() => {
@@ -41,6 +41,7 @@ function ProductListing() {
       withCredentials: true
       })
       setCategories(res.data);
+    console.log(res);
 
     }catch(err){
       console.log(err);
@@ -55,6 +56,8 @@ function ProductListing() {
       withCredentials: true
       })
       setCategoriesProduct(res.data[0]);
+    console.log(res);
+
     }catch(err){
       console.log(err);
     }
@@ -77,6 +80,7 @@ function ProductListing() {
       withCredentials:true
     });
     res;
+    console.log(res);
     setAdded(prev => [...prev, productId]);
     }catch(err){
       console.log(err, "error in cart");
