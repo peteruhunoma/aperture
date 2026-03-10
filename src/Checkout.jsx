@@ -2,6 +2,7 @@ import React, {useState, useEffect, useContext} from 'react'
 import axios from 'axios';
 import { useHistory, Link } from 'react-router-dom/cjs/react-router-dom.min';
 import { AuthContext } from './auth';
+import Header from "./Header";
 
 function Checkout() {
   const [firstName, setFirstName] = useState("");
@@ -144,6 +145,7 @@ function Checkout() {
   
   return (
 <div className="bg-gray-100 dark:bg-background-dark font-sans antialiased text-gray-900 dark:text-text-main-dark min-h-screen flex flex-col">
+<Header/>
 <main className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
   <div className="text-center mb-12">
     <h1 className="text-4xl font-bold text-gray-900 dark:text-text-main-dark mb-10 tracking-tight">Checkout</h1>
