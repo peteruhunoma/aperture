@@ -24,7 +24,7 @@ function ShoppingCart() {
        });
        
        setCarts(res.data.items);
-       console.log(res.data);
+       console.log(res.data.items[0]);
        setSubtotal(res.data.subtotal);
        console.log(res.data);
      } catch (err) {
@@ -37,11 +37,14 @@ function ShoppingCart() {
   
    
    const changeQty = async (item, newQty) => {
+    if (newQty < 1) return; // prevent going below 1
+    
+    setActiveId(item.product_id); // ← set activeId FIRST
     setQuantity(newQty);                  
     try {
       await axios.post(
         `${import.meta.env.VITE_BASE_URL}/posts/addtocart`,
-        { id:item.product_id, productId: item.product_id, quantity: newQty },
+        { id: item.product_id, productId: item.product_id, quantity: newQty },
         { withCredentials: true }
       );
       handleShoppingCart();
@@ -94,9 +97,9 @@ function ShoppingCart() {
             <p className="text-gray-900 dark:text-white text-4xl font-black leading-tight tracking-[-0.033em] min-w-72">
               Your Shopping Cart
             </p>
-            <a className="text-primary hover:underline text-sm font-medium" href="#">
+            <Link className="text-primary hover:underline text-sm font-medium" to="/">
               Continue Shopping
-            </a>
+            </Link>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 xl:gap-12">
@@ -116,8 +119,8 @@ function ShoppingCart() {
       style={{backgroundImage: `url(${item.media})`}}
     ></div>
     <div className="flex flex-1 flex-col justify-center gap-1">
-      <p className="text-gray-900 dark:text-white text-base font-bold leading-normal">{item.productName}</p>
-      <p className="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">${item.price}</p>
+      <p className="text-gray-900 dark:text-white text-base font-bold leading-normal">{item.ProductName}</p>
+      <p className="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">${item.Price}</p>
       <div className="flex items-center gap-2 text-sm mt-2">
         <button className="text-gray-600 hover:text-red dark:text-gray-400 dark:hover:text-primary font-medium" onClick={() => {
           
@@ -130,7 +133,10 @@ function ShoppingCart() {
   </div>
   <div className="shrink-0 flex sm:flex-col items-center justify-between sm:justify-center gap-4">
     <div className="flex items-center gap-2 text-gray-900 dark:text-white">
-      <button className="text-base font-medium leading-normal flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 cursor-pointer transition-colors"  onClick={() => { const oldQty = item.product_id ? quantity : item.quantity; changeQty(item, oldQty - 1); }}>
+      <button className="text-base font-medium leading-normal flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 cursor-pointer transition-colors"  onClick={() => {
+  const oldQty = activeId === item.product_id ? quantity : item.quantity; // ← match input logic
+  changeQty(item, oldQty - 1);
+}}>
         -
       </button>
       <input 
@@ -140,11 +146,14 @@ function ShoppingCart() {
          
         
       />
-      <button className="text-base font-medium leading-normal flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 cursor-pointer transition-colors"  onClick={() => { const oldQty =  item.product_id ? quantity : item.quantity; changeQty(item, oldQty + 1); }}>
+      <button className="text-base font-medium leading-normal flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 cursor-pointer transition-colors"  onClick={() => {
+  const oldQty = activeId === item.product_id ? quantity : item.quantity; // ← match input logic
+  changeQty(item, oldQty + 1);
+}}>
         +
       </button>
     </div>
-    <p className="text-base font-bold text-gray-900 dark:text-white">${item.price}</p>
+    <p className="text-base font-bold text-gray-900 dark:text-white">${item.Price}</p>
   </div>
 </div>
 

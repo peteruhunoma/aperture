@@ -11,6 +11,7 @@ function ProductDetails() {
   const {currentuser} = useContext(AuthContext);
   console.log(currentuser)
   const [productDetails, setProductDetails] = useState([]);
+  const [added, setAdded] = useState([]);
   const [categoriesProduct, setCategoriesProduct ] = useState([]);
   const [nav, setNav] = useState(true);
   const params = useLocation();
@@ -19,6 +20,8 @@ function ProductDetails() {
   console.log(id, "id number");
   const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(true);
+  const [cartTotal, setCartTotal] = useState("");
+
 
   
   useEffect(() => {
@@ -53,23 +56,30 @@ function ProductDetails() {
        
     }
   };
-  const addToCart = async () => {
-    const productId = id;
+  const addToCart = async (productId) => {
     try{
     const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/posts/addtocart`, { id, productId, quantity},
     {
       withCredentials:true
     });
     res;
+    cart();
+    setAdded(prev => [...prev, productId]);
+
     }catch(err){
       console.log(err, "error in cart");
     }
   }
   const cart = async () => {
+    try{
      const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/posts/carts`, {
       withCredentials:true
      });
      res;
+     setCartTotal(res.data.items.length);
+    }catch(err){
+      console.log(err);
+    }
 
   } 
 
@@ -112,7 +122,7 @@ function ProductDetails() {
   <>{loading ? "loading" : <div className="bg-background-light dark:bg-background-dark font-display text-[#212529] dark:text-gray-300">
       <div className="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
         <div className="layout-container flex h-full grow flex-col">
-          <Header />
+          <Header refreshCartTotal={cartTotal}/>
           
           <main className="px-4 sm:px-10 lg:px-20 py-5">
             <div className="layout-content-container flex flex-col w-full max-w-7xl mx-auto">
@@ -196,8 +206,12 @@ function ProductDetails() {
 />
                       <button className="px-3 py-2 text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary"  onClick={increment}>+</button>
                     </div>
-                    <button className="flex-1 flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary text-white gap-2 text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 py-3 sm:py-3 px-2" onClick={addToCart}>
-  Add to Cart
+                    {console.log(productDetails.id)}
+                    <button className="flex-1 flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary text-white gap-2 text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 py-3 sm:py-3 px-2" onClick={(e) => {
+                      e.stopPropagation();
+                      addToCart(productDetails.id)
+                      }}>
+                    {added.includes(productDetails.id) ? 'Added to Cart' : 'Add to Cart'}
 </button>
                     <button className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-4">
                       <span className="material-symbols-outlined">favorite_border</span>

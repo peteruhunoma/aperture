@@ -191,7 +191,11 @@ function Home() {
                               </p>
 
                               <button
-                                onClick={() => addToCart(items.id)}
+                                onClick={(e) => { 
+                                  e.stopPropagation();
+                                  addToCart(items.id)
+                                }}
+                                
                                 className="w-full bg-blue-50 dark:bg-blue-900/20 text-primary hover:bg-primary hover:text-white py-2 rounded text-sm font-medium transition-colors"
                               >
                                 {added.includes(items.id) ? 'Added to Cart' : 'Add to Cart'}
