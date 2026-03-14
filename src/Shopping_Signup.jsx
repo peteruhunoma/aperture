@@ -4,7 +4,7 @@ import moment from "moment";
 import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 
-function Signup() {
+function Shopper_Signup() {
 const [email, setEmail] = useState("");
 const [username, setUsername] = useState("");
 const [password, setPassword] = useState("");
@@ -186,4 +186,4 @@ try{
 </div>  );
 }
 
-export default Signup;
+export default Shopper_Signup;
