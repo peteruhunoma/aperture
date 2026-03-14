@@ -4,7 +4,7 @@ import axios from "axios";
 import { AuthContext } from './auth';
 
 
-function Buyer_Login() {
+function Shopper_Login() {
   const history = useHistory();
   const {login, currentuser} = useContext(AuthContext);
   const [emailOrUsername, setEmailOrUsername] = useState("");
@@ -160,4 +160,4 @@ console.log(err);
   );
 }
 
-export default Buyer_Login;
+export default Shopper_Login;
