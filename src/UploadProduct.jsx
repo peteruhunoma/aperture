@@ -7,12 +7,18 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min.js';
 function UploadProduct() {
   const history = useHistory();
   const [productName, setProductName] = useState("");
+  const [productNameError, setProductNameError] = useState("");
   const [productDescription, setProductDescription] = useState("");
+  const [productDescriptionError, setProductDescriptionError] = useState("");
   const [stockNumber, setStockNumber] = useState("");
+  const [stockNumberError, setStockNumberError] = useState("");
   const [price, setPrice] = useState("");
+  const [priceError, setPriceError] = useState("");
   const [category, setCategory] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedCategoryError, setSelectedCategoryError] = useState("");
   const [imageFile, setImageFile] = useState(null);
+  const [imageFileError, setImageFileError] = useState(null);
   const [tempImage, setTempImage] = useState([]);
   const [isSubmit, setIsSubmit] = useState(false);
   const [error, setError] = useState("");
@@ -59,10 +65,54 @@ useEffect(() => {
   
 }, [])
 
+const handleValidation = ()=>{
+  if (!productName.trim()){
+    setProductNameError("product name  field is empty");
+  }else{
+    setProductNameError("");
+  }
+  if (!productDescription.trim()){
+    setProductDescriptionError("product description field is empty");
+  }else{
+    setProductDescriptionError("");
+  }
+  if (!tempImage.length){
+    setImageFileError("image  field is empty");
+  }else{
+    setImageFileError("");
+  }
+  
 
+  if (!stockNumber.trim()){
+    setStockNumberError("stock number field is empty");
+  }else{
+    setStockNumberError("");
+  }
+
+  if (!price.trim()){
+    setPriceError("price field is empty");
+  }  
+  else{
+    setPriceError("");
+  }
+  if (!selectedCategory.trim()){
+    setSelectedCategoryError("category field is empty");
+  } else{
+    setSelectedCategoryError("");
+  }
+  
+  
+
+  
+}
 
 const publish = async (e) => {
   e.preventDefault();
+  if(!handleValidation()) {
+    console.log("validation success");
+  }
+  
+  if(handleValidation){
   if (isSubmit)  return;
   setIsSubmit(true);
   if (!tempImage.length) return alert('Please select at least one image');
@@ -107,6 +157,7 @@ const publish = async (e) => {
     }
 
   } 
+  }
 };
 
   return (
@@ -130,10 +181,14 @@ const publish = async (e) => {
 <p className="text-gray-800 dark:text-gray-200 text-base font-medium leading-normal pb-2">Product Name</p>
 <input className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-gray-900 dark:text-gray-100 focus:outline-0 focus:ring-2 focus:ring-blue/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-background-dark h-12 placeholder:text-gray-500 dark:placeholder:text-gray-400 p-[15px] text-base font-normal leading-normal" placeholder="e.g., Modern Leather Sofa" onChange={e => setProductName(e.target.value)} />
 </label>
+<p className='text-red-500'>{productNameError}</p>
+
 <label className="flex flex-col w-full">
 <p className="text-gray-800 dark:text-gray-200 text-base font-medium leading-normal pb-2">Product Description</p>
 <textarea className="form-textarea flex w-full min-w-0 flex-1 resize-y overflow-hidden rounded-lg text-gray-900 dark:text-gray-100 focus:outline-0 focus:ring-2 focus:ring-blue/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-background-dark min-h-36 placeholder:text-gray-500 dark:placeholder:text-gray-400 p-[15px] text-base font-normal leading-normal" placeholder="Describe your product in detail..." onChange={e => setProductDescription(e.target.value)}></textarea>
 </label>
+<p className='text-red-500'>{productDescriptionError}</p>
+
 </div>
 </div>
 <div className="bg-white dark:bg-gray-900/50 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 ">
@@ -164,6 +219,8 @@ const publish = async (e) => {
 ))}
 </div>
 <p className='text-red-500'>{error}</p>
+<p className='text-red-500'>{imageFileError}</p>
+
 </div>
 <div className="lg:col-span-1 space-y-8">
 <div className="bg-white dark:bg-gray-900/50 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 ">
@@ -189,6 +246,8 @@ const publish = async (e) => {
 </div>
 </div>
 </label>
+<p className='text-red-500'>{selectedCategoryError}</p>
+
 <label className="flex flex-col w-full">
 <p className="text-gray-800 dark:text-gray-200 text-base font-medium leading-normal pb-2">Price</p>
 <div className="relative">
@@ -198,12 +257,16 @@ const publish = async (e) => {
 <input className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-gray-900 dark:text-gray-100 focus:outline-0 focus:ring-2 focus:ring-blue/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-background-dark h-12 placeholder:text-gray-500 dark:placeholder:text-gray-400 pl-7 pr-4 text-base font-normal leading-normal" placeholder="0.00" onChange={e => setPrice(e.target.value)}/>
 </div>
 </label>
+<p className='text-red-500'>{priceError}</p>
+
 <label className="flex flex-col w-full">
 <p className="text-gray-800 dark:text-gray-200 text-base font-medium leading-normal pb-2">Stock</p>
 <div className="relative">
 <input className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-gray-900 dark:text-gray-100 focus:outline-0 focus:ring-2 focus:ring-blue/50 border border-gray-300 dark:border-gray-700 bg-background-light dark:bg-background-dark h-12 placeholder:text-gray-500 dark:placeholder:text-gray-400 pl-7 pr-4 text-base font-normal leading-normal" placeholder="100000" onChange={e => setStockNumber(e.target.value)}/>
 </div>
 </label>
+<p className='text-red-500'>{stockNumberError}</p>
+
 </div>
 </div>
 <div className="flex flex-col sm:flex-row gap-3 pt-4">
