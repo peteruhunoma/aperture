@@ -130,7 +130,7 @@ function ProductDetails() {
               4">
                 <Link className="text-gray-500 dark:text-gray-400 text-sm font-medium leading-normal hover:text-primary" to="/">Home</Link>
                 <span className="text-gray-500 dark:text-gray-400 text-sm font-medium leading-normal">/</span>
-                <Link className="text-gray-500 dark:text-gray-400 text-sm font-medium leading-normal hover:text-primary capitalize" to={`/${productDetails.Category}`}>{productDetails.category}</Link>
+                <Link className="text-gray-500 dark:text-gray-400 text-sm font-medium leading-normal hover:text-primary capitalize" to={`/${productDetails.Category}`}>{productDetails.Category}</Link>
                 <span className="text-gray-500 dark:text-gray-400 text-sm font-medium leading-normal">/</span>
                 <span className="text-gray-900 dark:text-gray-100 text-sm font-medium leading-normal capitalize">{productDetails.ProductName}</span>
               </div>
