@@ -65,54 +65,61 @@ useEffect(() => {
   
 }, [])
 
-const handleValidation = ()=>{
-  if (!productName.trim()){
-    setProductNameError("product name  field is empty");
-  }else{
+const handleValidation = () => {
+  let isValid = true; // Assume valid initially
+  
+  if (!productName.trim()) {
+    setProductNameError("product name field is empty");
+    isValid = false; // Mark as invalid
+  } else {
     setProductNameError("");
   }
-  if (!productDescription.trim()){
+  
+  if (!productDescription.trim()) {
     setProductDescriptionError("product description field is empty");
-  }else{
+    isValid = false;
+  } else {
     setProductDescriptionError("");
   }
-  if (!tempImage.length){
-    setImageFileError("image  field is empty");
-  }else{
+  
+  if (!tempImage.length) {
+    setImageFileError("image field is empty");
+    isValid = false;
+  } else {
     setImageFileError("");
   }
-  
 
-  if (!stockNumber.trim()){
+  if (!stockNumber.trim()) {
     setStockNumberError("stock number field is empty");
-  }else{
+    isValid = false;
+  } else {
     setStockNumberError("");
   }
 
-  if (!price.trim()){
+  if (!price.trim()) {
     setPriceError("price field is empty");
-  }  
-  else{
+    isValid = false;
+  } else {
     setPriceError("");
   }
-  if (!selectedCategory.trim()){
+  
+  if (!selectedCategory.trim()) {
     setSelectedCategoryError("category field is empty");
-  } else{
+    isValid = false;
+  } else {
     setSelectedCategoryError("");
   }
   
-  
-
-  
-}
+  return isValid; // Return true if all fields are valid, false if any field is invalid
+};
 
 const publish = async (e) => {
   e.preventDefault();
   if(!handleValidation()) {
     console.log("validation success");
+    return;
   }
-  
-  if(handleValidation){
+
   if (isSubmit)  return;
   setIsSubmit(true);
   if (!tempImage.length) return alert('Please select at least one image');
@@ -157,7 +164,7 @@ const publish = async (e) => {
     }
 
   } 
-  }
+  
 };
 
   return (
